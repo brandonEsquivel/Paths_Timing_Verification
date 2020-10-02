@@ -1,6 +1,6 @@
 # Paths_Timing_Verification
-# UCR 
-## EIE
+# Verilog
+## UCR, EIE
 
 ### Brandon Esquiivel Molina
 ### brandon.esquivel@ucr.ac.cr
