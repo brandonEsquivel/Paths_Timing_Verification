@@ -1,4 +1,4 @@
-# Paths_Timing_Verification
+# Paths Timing Verification
 # Verilog
 ## UCR, EIE
 
