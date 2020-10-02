@@ -1,27 +1,17 @@
 #Verilog
 
-# Making verilog makefile 
+# Making verilog makefile
 # Makefile to simulate Verilog HDL designs under GNU.
-###  		Brandon Esquivel Molina
-######## 	brandon.esquivel@ucr.ac.cr.com
-### 		Co-work with Belinda Brown.
-## special thanks to her, who was the brain of this Makefile.
+# Brandon Esquivel Molina
+# brandon.esquivel@ucr.ac.cr.com
 
 
-# 							Makefile logic:
-# To create this file you need these files:
-# $ @ replace left
-# $ ^ right
-
-
-#******************************************************************************
-#													MARKS
-#******************************************************************************
-# 1. For state machine and a parameterized multiplexer ---------- fsm_mux
+# 	Makefile logic: this is a specific version of a very general makefile for synthesis, compilation and simulation.
+# To create this file you need these files:   -- checker.v clock.v contador<X>.v counters_tb.v driver.v scoreboard.v top_tb.v
 
 #if you feel lazy, just make all.
 
-all:	clean yfsm_mux rfsm_mux vfsm_mux gtkwavefsm_mux
+all:	clean v_tb gtkwave
 
 #******************************************************************************
 #										TARGETS
@@ -38,12 +28,6 @@ all:	clean yfsm_mux rfsm_mux vfsm_mux gtkwavefsm_mux
 # is to model a synchronous digital circuit in terms of digital signal
 # flow (this being data) relating it to the hardware registers and the
 # logical operations that are carried out in each signal.
-
-
-### 						SED				use $make	r<mark>
-# Replaces on the synthesized file the name module,
-# because for making the stuctural decription we use the
-# behavioral on yosys
 
 #### 					 IVERILOG 		use $make v<mark>
 # It is defined as an HDL (Hardware Description Language),
@@ -69,35 +53,40 @@ DIAGRAMS_GENERATED = ./diagrams_generated/
 
 LIB = ./lib/
 
-LOG_TXT = ./log_txt/
+LOG = ./log/
 
 SRC = ./src/
-_FSM_MUX = fsm_mux.v
+_CHECKER = checker.v
+_CLOCK = clock.v
+_MONITOR = monitor.v
+_SB = scoreboard.v
 
 
 SYN = ./syn/
-_SFSM_MUX = fsm_mux_syn.v
+_CONTADOR_A = contadorA.v
+_CONTADOR_B = contadorB.v
+_CONTADOR_c = contadorC.v
 
 
 TESTBENCHES = ./testbenches/
-_TB_FSM_MUX =  tb_fsm_mux.v
+_COUNTERS_TB =  counters_tb.v
+_TOP_TB = top_tb.v
 
 
 TESTERS = ./testers/
-_T_FSM_MUX = t_fsm_mux.v
+_DRIVER = driver.v
 
 
-_VCD_FSM_MUX = fsm_mux.vcd
+_VCD_TEST = test.vcd
 
 
 
 OVVP = ./vvp/
-_VVP_FSM_MUX = fsm_mux.vvp
+_VVP_TEST = test.vvp
 
 
 
 YOSYS = ./yosys/
-_Y_FSM_MUX = fsm_mux_y.ys
 
 
 #******************************************************************************
@@ -108,29 +97,29 @@ _Y_FSM_MUX = fsm_mux_y.ys
 
 
 #******************************************************************************
-#### 														FSM MUX
+#### 						make the complete test
 #******************************************************************************
 
-yfsm_mux:
-	yosys $(YOSYS)$(_Y_FSM_MUX)
-
-rfsm_mux:
-	sed -i ' s/fsm_par_mux/fsm_par_mux_syn/; s/regid/regid_syn/; s/msf/msf_syn/' $(SYN)$(_SFSM_MUX)
-
-vfsm_mux:
-	iverilog -o $(OVVP)$(_VVP_FSM_MUX) $(TESTBENCHES)$(_TB_FSM_MUX)
-	vvp $(OVVP)$(_VVP_FSM_MUX) > $(LOG_TXT)$(_VVP_FSM_MUX)_log.txt
+v_tb:
+	iverilog -o $(OVVP)$(_VVP_TEST) $(TESTBENCHES)$(_TOP_TB)
+	vvp $(OVVP)$(_VVP_TEST) > $(LOG)$(_VVP_TEST)_log.txt
 
 #target phony
-.PHONY: gtkwavemux21
-gtkwavefsm_mux:
-	gtkwave $(_VCD_FSM_MUX) config.gtkw
+.PHONY: gtkwavetest
+gtkwave:
+	gtkwave $(_VCD_TEST) config.gtkw
 
+gtkwaveA:
+	gtkwave $(_VCD_TEST) configA.gtkw
 
+gtkwaveB:
+	gtkwave $(_VCD_TEST) configB.gtkw
 
+gtkwaveC:
+	gtkwave $(_VCD_TEST) configC.gtkw
 
 #******************************************************************************
-############ CLEAN FOR ALL
+# CLEAN  ALL
 #******************************************************************************
 
 
