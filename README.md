@@ -12,9 +12,13 @@ It is proposed as an assignment of the course Microelectronics: Silicon Systems 
 ## Counter
 
 A case statement is used to execute 4 modes of counter operation:
+
 ** Count up.
+
 ** Count down.
+
 ** Count three at a time up.
+
 ** Parallel charging.
 
 # How to run - Makefile
