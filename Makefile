@@ -2,8 +2,9 @@
 
 # Making verilog makefile
 # Makefile to simulate Verilog HDL designs under GNU.
+# an adaptation of the joint work with Belinda Brown
 # Brandon Esquivel Molina
-# brandon.esquivel@ucr.ac.cr.com
+# brandon.esquivel@ucr.ac.cr
 
 
 # 	Makefile logic: this is a specific version of a very general makefile for synthesis, compilation and simulation.
@@ -60,12 +61,11 @@ _CHECKER = checker.v
 _CLOCK = clock.v
 _MONITOR = monitor.v
 _SB = scoreboard.v
-
+_CONTADOR = counter.v
 
 SYN = ./syn/
-_CONTADOR_A = contadorA.v
-_CONTADOR_B = contadorB.v
-_CONTADOR_c = contadorC.v
+_CONTADOR_SYN = counter_syn.v
+
 
 
 TESTBENCHES = ./testbenches/
@@ -87,6 +87,7 @@ _VVP_TEST = test.vvp
 
 
 YOSYS = ./yosys/
+_Y_COUNT = counter.ys
 
 
 #******************************************************************************
@@ -99,6 +100,20 @@ YOSYS = ./yosys/
 #******************************************************************************
 #### 						make the complete test
 #******************************************************************************
+
+Allcount: ycount rcount v_tb gtkw
+
+AllcountA: ycount rcount v_tb gtkwA
+
+AllcountB: ycount rcount v_tb gtkwB
+
+## individual steps
+
+ycount:
+	yosys $(YOSYS)$(_Y_COUNT)
+
+rcount:
+	sed -i ' s/contador/contador_syn/g' $(SYN)$(_CONTADOR_SYN)
 
 v_tb:
 	iverilog -o $(OVVP)$(_VVP_TEST) $(TESTBENCHES)$(_TOP_TB)
@@ -114,9 +129,6 @@ gtkwaveA:
 
 gtkwaveB:
 	gtkwave $(_VCD_TEST) configB.gtkw
-
-gtkwaveC:
-	gtkwave $(_VCD_TEST) configC.gtkw
 
 #******************************************************************************
 # CLEAN  ALL
