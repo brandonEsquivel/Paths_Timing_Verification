@@ -23,7 +23,10 @@ A case statement is used to execute 4 modes of counter operation:
 
 # How to run - Makefile
 
-if you feel lazy, just --make Allcounter-- 
+if you feel lazy, just:
+
+--make Allcounter-- 
+
 inside the makefile you can find detailed comments of the complation, synth and simulation steps.
 
 ## For more information(in spanish) see the report inside the docs folder.
