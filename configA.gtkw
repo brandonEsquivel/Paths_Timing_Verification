@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Thu Oct  8 01:48:52 2020
+[*]
+[dumpfile] "/home/bran/Documentos/repositories/Paths_Timing_Verification/test.vcd"
+[dumpfile_mtime] "Thu Oct  8 01:27:02 2020"
+[dumpfile_size] 69921
+[savefile] "/home/bran/Documentos/repositories/Paths_Timing_Verification/configA.gtkw"
+[timestart] 5820
+[size] 1853 919
+[pos] -29 -29
+*-12.730361 4820 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_top.
+[sst_width] 43
+[signals_width] 126
+[sst_expanded] 0
+[sst_vpaned_height] 264
+@28
+tb_top.Behav.clk
+tb_top.Behav.ENABLE
+tb_top.Behav.RESET
+tb_top.Behav.MODO[1:0]
+@200
+-
+-BEHAV
+@201
+-bLUE
+@200
+-
+-SYNTH
+-GREEN
+@22
+[color] 5
+tb_top.Behav.D[3:0]
+tb_top.tb.D[3:0]
+@200
+-
+@22
+[color] 5
+tb_top.Behav.Q[3:0]
+tb_top.tb.syn_Q[3:0]
+@200
+-
+@28
+[color] 5
+tb_top.Behav.RCO
+tb_top.tb.syn_RCO
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0

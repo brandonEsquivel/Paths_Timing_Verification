@@ -1,7 +1,7 @@
 `ifndef COUNTERS_TB
 `define COUNTERS_TB
 
-`timescale 1 ns/ 1ps
+`timescale 1 ns / 1 ps
 
 module counters_tb(
 
@@ -83,12 +83,12 @@ end
     .clk      (clk),
     .ENABLE   (ENABLE),
     .RESET    (RESET),
-    . syn_D     (D),
-    . syn_MODO  (MODO),
+    .D     (D),
+    .MODO  (MODO),
     // OUTPUTS
-    . syn_Q     ( syn_wQ),
-    . syn_RCO   ( syn_wRCO),
-    . syn_LOAD  ( syn_wLOAD)
+    .Q     ( syn_wQ),
+    .RCO   ( syn_wRCO),
+    .LOAD  ( syn_wLOAD)
   );
 
   always @(*) begin

@@ -2,7 +2,7 @@
 `define CMOS_CELLS
 
 //  Describing the modules of the same cmos_cells.lib with timing & delays considerations
-
+`timescale 1 ns / 1 ps
 
 /* SPECIFY BLOCKS
 The specify block describes paths across the module and assigns delays to those paths.
@@ -105,12 +105,12 @@ endmodule
 // output HIGH.
 // Part: 74LVC1G10 Single 3-Input Positive-NAND Gate
 // Switching Characteristics, CL = 15 pF, Max tpd of 6.2 ns at 3.0 - 3.6 V, typ 5.0
-module NAND(A, B, C, Y);
+module NAND3(A, B, C, Y);
 specify
 	specparam tpd = 5.0;
-	(A*> Y) = (tpd, tpd);   // tRise,tFall
+	(A,B,C*> Y) = (tpd, tpd);   // tRise,tFall
 endspecify
-input A, B;
+input A, B, C;
 output Y;
 assign Y = ~(A & B & C);
 endmodule
@@ -125,12 +125,12 @@ endmodule
 // output HIGH.
 // Part: SN74LVC1G27 SINGLE 3-INPUT POSITIVE-NOR GATE
 // Switching Characteristics, CL = 50 pF, Max tpd of 6.2 ns at 3.3 V typ 4.5
-module NOR(A, B, C, Y);
+module NOR3(A, B, C, Y);
 specify
 	specparam tpd = 4.5;
-	(A*> Y) = (tpd, tpd);   // tRise,tFall
+	(A,B,C*> Y) = (tpd, tpd);   // tRise,tFall
 endspecify
-input A, B;
+input A, B, C;
 output Y;
 assign Y = ~(A | B | C);
 endmodule
@@ -148,8 +148,7 @@ specify
 	specparam tpd = 4.2;
 	specparam thold = 0.9;
 	specparam tsetup = 2.5;
-	(D => Q) = (tpd, tpd);   // tRise,tFall
-///////////////////////////////////////////////////// check
+	(C,D => Q) = (tpd, tpd);   // tRise,tFall
 	$setup(D, posedge C, tsetup);
  	$hold(posedge C, D, thold);
 endspecify
@@ -160,3 +159,4 @@ always @(posedge C)
 	Q <= D;
 endmodule
 
+`endif

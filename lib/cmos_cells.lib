@@ -1,15 +1,3 @@
-// Commented by
-//	Belinda Brown Ramírez
-//	Mayo, 2020
-//	timna.brown@ucr.ac.cr
-
-
-// Choosing cmos_cells as a library with a commercial technology
-// available to carry out the technological mapping of the design.
-//This produces a structural description using commercially
-//available components.
-
-
 // test comment
 /* test comment */
 library(demo) {
@@ -20,20 +8,20 @@ library(demo) {
               function: "A"; }
   }
   cell(NOT) {
-    area: 3;
+    area: 33;
     pin(A) { direction: input; }
     pin(Y) { direction: output;
               function: "A'"; }
   }
   cell(NAND) {
-    area: 4;
+    area: 34;
     pin(A) { direction: input; }
     pin(B) { direction: input; }
     pin(Y) { direction: output;
              function: "(A*B)'"; }
   }
   cell(NOR) {
-    area: 4;
+    area: 34;
     pin(A) { direction: input; }
     pin(B) { direction: input; }
     pin(Y) { direction: output;
@@ -51,7 +39,7 @@ library(demo) {
   }
   cell(DFFSR) {
     area: 18;
-    ff("IQ", "IQN") { clocked_on: C;
+    ff(IQ, IQN) { clocked_on: C;
                   next_state: D;
                       preset: S;
                        clear: R; }
@@ -62,6 +50,5 @@ library(demo) {
               function: "IQ"; }
     pin(S) { direction: input; }
     pin(R) { direction: input; }
-    ; // empty statement
   }
 }

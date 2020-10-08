@@ -101,11 +101,11 @@ _Y_COUNT = counter.ys
 #### 						make the complete test
 #******************************************************************************
 
-Allcount: ycount rcount v_tb gtkw
+Allcount: 	clean ycount rcount ccount gtkwave
 
-AllcountA: ycount rcount v_tb gtkwA
+AllcountA:	clean  ycount rcount ccount gtkwaveA
 
-AllcountB: ycount rcount v_tb gtkwB
+AllcountB:	clean  ycount rcount ccount gtkwaveB
 
 ## individual steps
 
@@ -115,8 +115,8 @@ ycount:
 rcount:
 	sed -i ' s/contador/contador_syn/g' $(SYN)$(_CONTADOR_SYN)
 
-v_tb:
-	iverilog -o $(OVVP)$(_VVP_TEST) $(TESTBENCHES)$(_TOP_TB)
+ccount:
+	iverilog -o $(OVVP)$(_VVP_TEST) -gspecify $(TESTBENCHES)$(_TOP_TB)
 	vvp $(OVVP)$(_VVP_TEST) > $(LOG)$(_VVP_TEST)_log.txt
 
 #target phony

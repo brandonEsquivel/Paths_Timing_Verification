@@ -6,7 +6,7 @@
 `ifndef COUNTER
 `define COUNTER
 
-`timescale 1 ns/ 1ps
+`timescale 1 ns / 1 ps
 
 module contador(
   // inputs

@@ -7,13 +7,13 @@
 `include "./src/counter.v"
 `include "./syn/counter_syn.v"
 `include "./lib/cmos_cells.v"
-`include "./tesbenches/counters_tb.v"
+`include "./testbenches/counters_tb.v"
 
 
 /*This is the top module of the structure, it maintains the include,
 the clock, and the instance of the behavioral module, while the synthesized
 structural counter is instantiated and handled within the internal testbench.*/
-
+`timescale 1 ns / 1 ps
 
 
 module tb_top;
@@ -47,11 +47,11 @@ counters_tb tb(
 
 /// Counter behavorial instance
 
-counter     Behav (
+contador     Behav (
 .clk        (clock),
 .RESET      (RESET),
 .ENABLE     (ENABLE),
-.MODE       (MODO),
+.MODO       (MODO),
 .D          (D),
 .LOAD       (LOAD),
 .RCO        (RCO),
