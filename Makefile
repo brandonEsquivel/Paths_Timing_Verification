@@ -2,7 +2,7 @@
 
 # Making verilog makefile
 # Makefile to simulate Verilog HDL designs under GNU.
-# an adaptation of the joint work with Belinda Brown
+# an adaptation of the joint work with Belinda Brown. The best colleague of my career to date
 # Brandon Esquivel Molina
 # brandon.esquivel@ucr.ac.cr
 
@@ -12,7 +12,7 @@
 
 #if you feel lazy, just make all.
 
-all:	clean v_tb gtkwave
+
 
 #******************************************************************************
 #										TARGETS
@@ -100,12 +100,11 @@ _Y_COUNT = counter.ys
 #******************************************************************************
 #### 						make the complete test
 #******************************************************************************
+#if you feel lazy, just make all<count>.
 
 Allcount: 	clean ycount rcount ccount gtkwave
 
-AllcountA:	clean  ycount rcount ccount gtkwaveA
-
-AllcountB:	clean  ycount rcount ccount gtkwaveB
+AllcountA: 	clean ycount rcount ccount gtkwaveA
 
 ## individual steps
 
@@ -127,8 +126,6 @@ gtkwave:
 gtkwaveA:
 	gtkwave $(_VCD_TEST) configA.gtkw
 
-gtkwaveB:
-	gtkwave $(_VCD_TEST) configB.gtkw
 
 #******************************************************************************
 # CLEAN  ALL

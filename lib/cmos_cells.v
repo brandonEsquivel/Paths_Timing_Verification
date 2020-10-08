@@ -1,7 +1,15 @@
 `ifndef CMOS_CELLS
 `define CMOS_CELLS
 
-//  Describing the modules of the same cmos_cells.lib with timing & delays considerations
+/* BRANDON ESQUIVEL MOLINA
+University of COsta Rica
+EIE, UCR
+github: @brandonEsquivel
+*/
+
+
+// Describing the modules of the same cmos_cells.lib with timing & delays considerations
+
 `timescale 1 ns / 1 ps
 
 /* SPECIFY BLOCKS
